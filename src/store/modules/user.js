@@ -5,8 +5,6 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
   sendPasswordResetEmail 
 } from "firebase/auth";
 import { doc, setDoc, getDoc, updateDoc, query, collection, where, getDocs } from "firebase/firestore";
@@ -133,20 +131,24 @@ export default {
         commit("setAuthIsProcessing", false);
       }
     },
-    async loginWithGoogle({commit, dispatch}) {
-      commit("setAuthIsProcessing", true);
-      commit("setAuthError", "");
+    // TO-DO
+    // async loginWithGoogle({commit, dispatch}) {
+    //   commit("setAuthIsProcessing", true);
+    //   commit("setAuthError", "");
 
-      try {
-        const provider = new GoogleAuthProvider(); 
-        await signInWithPopup(getAuth(), provider);
-      } catch(e) {
-        commit("setAuthError", e.message);
-        dispatch("toast/error", e.message, {root: true});
-      } finally {
-        commit("setAuthIsProcessing", false);
-      }
-    },
+    //   try {
+    //     const provider = new GoogleAuthProvider(); 
+    //     await signInWithPopup(getAuth(), provider)
+    //     .then((result) => {
+    //       console.log(result.user)
+    //     });
+    //   } catch(e) {
+    //     commit("setAuthError", e.message);
+    //     dispatch("toast/error", e.message, {root: true});
+    //   } finally {
+    //     commit("setAuthIsProcessing", false);
+    //   }
+    // },
     async logout({commit}) {
      try {
       await signOut(getAuth());

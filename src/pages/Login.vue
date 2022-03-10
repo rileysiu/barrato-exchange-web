@@ -40,8 +40,11 @@
           </form>
         </div>
         <p class="has-text-grey">
-          <a @click="loginWithGoogle">Sign In With Google</a> &nbsp;·&nbsp;
-          <a>Sign Up</a> &nbsp;·&nbsp;
+          <!-- <a @click="loginWithGoogle">Sign In With Google</a> &nbsp;·&nbsp; -->
+          <router-link
+            to="/register">
+            Register
+          </router-link> &nbsp;·&nbsp;
           <router-link
             to="/forgetpassword"
           >
@@ -96,9 +99,9 @@ export default {
         this.$store.dispatch("user/login", this.form);
       }
     },
-    async loginWithGoogle() {
-      await this.$store.dispatch("user/loginWithGoogle");
-    },
+    // async loginWithGoogle() {
+    //   await this.$store.dispatch("user/loginWithGoogle");
+    // },
   }
 }
 </script>

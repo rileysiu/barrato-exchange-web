@@ -12,7 +12,7 @@
               </figure>
             </div>
             <div class="column is-4-tablet is-10-mobile name">
-              <div class="user-info">
+              <div class="user-info mt-4">
                 <p>
                   <span class="title is-bold">{{user?.username}}</span>
                   <br/>
@@ -20,6 +20,9 @@
                 <p class="tagline">
                   {{user?.info}}
                 </p>
+              </div>
+              <div class="reminder">
+                Remember to update your phone number in profile
               </div>
               <profile-modal
                 v-if="user"

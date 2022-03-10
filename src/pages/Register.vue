@@ -58,9 +58,12 @@
           </form>
         </div>
         <p class="has-text-grey">
-          <a @click="loginWithGoogle">Sign In With Google</a> &nbsp;·&nbsp;
-          <a>Sign Up</a>&nbsp;·&nbsp;
-          <a href="../">Need Help?</a>
+          <!-- <a @click="loginWithGoogle">Sign In With Google</a> &nbsp;·&nbsp; -->
+          <span>Already have an account ?</span>&nbsp;·
+          <router-link
+            to="/login">
+            Log In
+          </router-link>
         </p>
       </div>
     </div>
@@ -117,9 +120,9 @@ export default {
         this.$store.dispatch("user/register", this.form);
       }
     },
-    async loginWithGoogle() {
-      await this.$store.dispatch("user/loginWithGoogle");
-    }
+    // async loginWithGoogle() {
+    //   await this.$store.dispatch("user/loginWithGoogle");
+    // }
   }
 }
 </script>

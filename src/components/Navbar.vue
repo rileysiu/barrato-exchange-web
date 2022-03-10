@@ -28,8 +28,8 @@
           class="navbar-menu"
         >
           <div class="navbar-end">
-            <div v-if="isAuthenticated" class="navbar-item">
-              {{user.email}}
+            <div v-if="isAuthenticated" class="navbar-item navbar-greeting">
+              Hi, {{user.username}}
             </div>
             <router-link
               v-for="item in items"

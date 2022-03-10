@@ -28,7 +28,7 @@ const routes = [
   },
   {
     path: "/faq",
-    name: "Faq",
+    name: "FAQ",
     component: FaqPage
   },
   {

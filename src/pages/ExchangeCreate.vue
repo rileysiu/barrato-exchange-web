@@ -90,7 +90,7 @@
                 @input="handleTags"
                 class="input"
                 type="text"
-                placeholder="programming">
+                placeholder="press space-bar to enter a tag">
               <div
                 v-for="tag in form.tags"
                 :key="tag"
@@ -118,6 +118,7 @@
 </template>
 
 <script>
+import useAuth from "../composition/useAuth";
 import useVuelidate from '@vuelidate/core'
 import { required, minValue, url, helpers } from '@vuelidate/validators'
 import FormErrors from "../components/FormErrors.vue";
@@ -147,7 +148,7 @@ export default {
       form: {
         title: {
           required: helpers.withMessage("Title cannot by empty!", required),
-          // minLength: helpers.withMessage("Title length should be at least 10!", minLength(10)),
+          // minLength: helpers.withMessage("Title length should be at least 3!", minLength(3)),
         },
         description: { required },
         type: { required },
@@ -165,7 +166,15 @@ export default {
     }
   },
   setup () {
-    return { v$: useVuelidate() }
+    return { 
+      ...useAuth(),
+      v$: useVuelidate() 
+    }
+  },
+  watch: {
+    isAuthenticated(isAuth) {
+      if (!isAuth) { this.$router.push("/"); }
+    }
   },
   methods: {
     async createExchange() {
